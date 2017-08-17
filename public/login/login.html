@@ -1,0 +1,121 @@
+﻿<nav class="grey darken-4" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">Logo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a ui-sref="adminHome">Home</a></li>
+                    <li  class="active"><a ui-sref="login">Login</a></li>
+                  </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+</nav>
+
+<div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+        <div class="container ">
+            <div class="row center-align" style="padding-top:50px;opacity:0.9;">
+                    <div class="col s12 m4 l2"></div>
+             <div class="col s12 m4 l8 ">
+          <div class="card blue-grey lighten-4  ">
+            <div class="card-content grey-text text-darken-3">
+              <h4 class="header center teal-text">Please Login</h4>
+              <form name="loginForm"  autocomplete="on" style="padding-top:20px;" >
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="username" type="text" class="grey-text text-darken-3" ng-model="vm.user.username">
+                        <label class="grey-text text-darken-3" for="username">Username</label>
+                        <span  class="submit-error" ng-if="(loginForm.username.$dirty || vm.isSubmitted )&& (loginForm.username.$error.required)"><i><b>Username</b></i> is required.</span>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="password" type="password" class="grey-text text-darken-3" ng-model="vm.user.password">
+                        <label class="grey-text text-darken-3" for="username">Password</label>
+                        <span  class="submit-error" ng-if="(loginForm.password.$dirty || vm.isSubmitted )&& (loginForm.password.$error.required)"><i><b>Password</b></i> is required.</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <span ng-if="vm.error" class="submit-error teal-text text-darken-3">{{vm.error}}</span>
+                </div>
+                
+                <div class="row center">
+                    <button value="{{vm.loginBtnText}}"  ng-click="vm.login(loginForm)" id="download-button" class="btn waves-effect waves-light grey darken-3">Login</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m4 l2"><p></p></div>
+      </div>
+
+
+        </div>
+    </div>
+    <div class="parallax"><img src="../assets/images/background1.jpg" alt="Unsplashed background img 1"></div>
+</div>
+
+
+
+<footer class="page-footer teal darken-3 ">
+        <div class="footer-copyright  light-blue darken-1">
+            <div class="container">
+                Copyright © 2017 S N Finance Services. All Rights Reserved.
+            </div>
+        </div>    
+    </footer>
+        
+
+<!--<div class="centered">
+    <div id="login" class="animate form">
+        <form name="loginForm"  autocomplete="on" style="padding-top:20px;" >
+            <h1><strong></strong>Please Login</h1>
+            
+          
+            
+           
+           
+            
+        </form>
+    </div>
+</div>
+
+-->
+
+
+             <!--<p class="paragraph">
+                <input id="password" name="password" required="required" type="password" placeholder="Password" ng-model="vm.user.password"/>
+                <span  class="submit-error" ng-if="(loginForm.password.$dirty || vm.isSubmitted )&& (loginForm.password.$error.required)"><i><b>Password</b></i> is required.</span>
+            </p>-->
+              <!--<p class="paragraph">
+                <input id="username" name="username" required="required" type="text" placeholder="Username" ng-model="vm.user.username"/>
+                <span  class="submit-error" ng-if="(loginForm.username.$dirty || vm.isSubmitted )&& (loginForm.username.$error.required)"><i><b>Username</b></i> is required.</span>
+            </p>-->
+            <!--<p class="login button float-left">
+                <input type="button" value="{{vm.loginBtnText}}"  ng-click="vm.login(loginForm)"/>
+            </p>
+            <br><br>-->
+
+
+
+
+
+            <!--<br><br>
+            <h1 class="header center teal-text text-lighten-2">Please Login</h1>
+            <form name="loginForm"  autocomplete="on" style="padding-top:20px;" >
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="username" type="text" class="validate" ng-model="vm.user.username">
+                        <label for="username">Username</label>
+                        <span  class="submit-error" ng-if="(loginForm.username.$dirty || vm.isSubmitted )&& (loginForm.username.$error.required)"><i><b>Username</b></i> is required.</span>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="password" type="password" class="validate" ng-model="vm.user.password">
+                        <label for="username">Password</label>
+                        <span  class="submit-error" ng-if="(loginForm.password.$dirty || vm.isSubmitted )&& (loginForm.password.$error.required)"><i><b>Password</b></i> is required.</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <span ng-if="vm.error" class="submit-error white-text">{{vm.error}}.</span>
+                </div>
+                
+                <div class="row center">
+                    <button value="{{vm.loginBtnText}}"  ng-click="vm.login(loginForm)" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Login</button>
+                </div>
+            </form>-->

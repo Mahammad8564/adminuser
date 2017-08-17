@@ -1,0 +1,42 @@
+﻿<nav class="grey darken-4" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">Logo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li ><a ui-sref="adminHome">Home</a></li>
+                    <li class="active"><a ui-sref="home">Track Application Status</a></li>
+                  </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+</nav>>
+
+<div class="container footer-bottom" style="margin-top:30px;">
+    <div class="row" style="margin-top:30px;">
+            <div class="input-field col s6">
+                <input id="number"  type="text" class="validate" ng-model="vm.data.number">
+                <label  for="number">Number</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="mobileNumber" type="text" class="validate" ng-model="vm.data.mobileNumber">
+                <label  for="mobileNumber">Mobile Number</label>
+            </div>
+    </div>
+    <div class="row" style="margin-top:30px;" align=center>
+            <div class="input-field col s6">
+                <a ng-click="vm.login(loginForm)" id="download-button" class="waves-effect waves-light btn grey darken-3">Search</a>
+            </div>
+            <div class="input-field col s6">
+                <a ng-click="vm.login(loginForm)" id="download-button" class="waves-effect waves-light btn grey darken-3">Clear</a>
+            </div>
+    </div>
+
+</div>
+    
+
+</div>
+<footer class="page-footer teal darken-3 ">
+    <div class="footer-copyright  light-blue darken-1">
+        <div class="container">
+            Copyright © 2017 S N Finance Services. All Rights Reserved.
+        </div>
+    </div>    
+</footer>

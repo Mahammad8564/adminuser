@@ -1,0 +1,14 @@
+﻿<nav class="grey darken-4" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">Logo</a>
+        <ul class="right hide-on-med-and-down">
+            <li ng-if="vm.user" title="logged in as {{vm.user.fullname}}"><a ng-click="vm.logout()" href="">Logout</a></li>
+            <li ng-if="!vm.user"><a ng-class="{'active' : $root.toState.highlight === 'login'}" ui-sref="login">Login</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            <li><a ui-sref="home">Login</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
