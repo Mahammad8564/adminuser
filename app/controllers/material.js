@@ -1,6 +1,9 @@
 ﻿var models = require('../models');
 var Material = models.Material;
+<<<<<<< HEAD
 var Status = models.Status;
+=======
+>>>>>>> Vishesh
 var User = models.User;
 var Sequelize = require('sequelize');
 var _ = require('underscore');
@@ -20,7 +23,10 @@ var getErrorMessage = function (err) {
 //getting List of 
 //For Geting list of Materials
 exports.list = function (req, res) {
+<<<<<<< HEAD
     req.options.include = [{ model: Status, attributes: ["title", "id"] }];
+=======
+>>>>>>> Vishesh
     Material.findAndCountAll(req.options).then(function (arrs) {
         res.setHeader('total', arrs.count);
         res.json(arrs.rows);
@@ -37,7 +43,10 @@ exports.read = function (req, res) {
 exports.getById = function (req,res,next) {
     Material.findOne({
         where: { id: req.params.materialId},
+<<<<<<< HEAD
         include: [{ model: Status, attributes: ["title", "id"] }]
+=======
+>>>>>>> Vishesh
         //include: []
     }).then(function (obj) {
         req.material = obj;
