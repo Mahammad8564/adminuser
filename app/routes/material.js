@@ -12,5 +12,8 @@ module.exports = function (app) {
         .patch(material.update)
         .delete(material.delete);
 
+        app.route('/api/materialSearch')
+        .post(material.search);
+
     app.param('materialId', material.getById);
 }

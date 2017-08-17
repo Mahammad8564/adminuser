@@ -1,36 +1,61 @@
 ﻿<nav class="grey darken-4" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">Logo</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li ><a ui-sref="adminHome">Home</a></li>
-                    <li class="active"><a ui-sref="home">Track Application Status</a></li>
-                  </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        </div>
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">S N Finance</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a ui-sref="adminHome">Home</a></li>
+            <li class="active"><a ui-sref="home">Track Application Status</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
 </nav>
 
-<div class="container footer-bottom" style="margin-top:30px;">
-    <div class="row" style="margin-top:30px;">
-            <div class="input-field col s6">
-                <input id="number"  type="text" class="validate" ng-model="vm.data.number">
-                <label  for="number">Number</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="mobileNumber" type="text" class="validate" ng-model="vm.data.mobileNumber">
-                <label  for="mobileNumber">Mobile Number</label>
-            </div>
-    </div>
-    <div class="row" style="margin-top:30px;" align=center>
-            <div class="input-field col s6">
-                <a ng-click="vm.login(loginForm)" id="download-button" class="waves-effect waves-light btn grey darken-3">Search</a>
-            </div>
-            <div class="input-field col s6">
-                <a ng-click="vm.login(loginForm)" id="download-button" class="waves-effect waves-light btn grey darken-3">Clear</a>
-            </div>
-    </div>
+<div id="index-banner" class="parallax-container">
+<div class="row center-align" style="padding-top:75px;opacity:0.9;">
+    <div class="col s12 m4 l2"></div>
+    <div class="col s12 m4 l8 ">
+        <div class="card blue-grey lighten-4  ">
+            <div class="card-content grey-text text-darken-3">
+                <h4 class="header center teal-text">Track Your Application Status.</h4>
+                <div class="row">
+                <div class="col s3"></div>
+                <div class=" col s6">
+                Answer all of the security questions below to get the application status please make sure that the information you provide below matches what we have on record for you.
+                </div>  
+                <div class="col s3"></div>
+                </div>  
+                <div class="row">
+                        <div class="input-field col s2"></div>
+                        <div class="input-field col s4">
+                            <input id="number" type="text" class="validate" ng-model="vm.data.number">
+                            <label for="number">Application ID</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input id="mobileNumber" type="text" class="validate" ng-model="vm.data.mobileNumber">
+                            <label for="mobileNumber">Mobile Number</label>
+                        </div>
+                        <div class="input-field col s2"></div>
+                    </div>
+                    <div class="row">
+                        <span ng-if="vm.error" class="submit-error teal-text text-darken-3">{{vm.error}}</span>
+                        <span ng-if="vm.result" class="submit-error teal-text text-darken-3">{{vm.result.Status.title}}</span>
+                    </div>
 
+                    <div class="row center">
+                        <button value="{{vm.loginBtnText}}"  id="download-button" class="btn waves-effect waves-light grey darken-3" ng-click="vm.search()">Search</button>
+                        <button id="download-button" class="btn waves-effect waves-light grey darken-3">Clear</button>
+                    </div>
+              
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4 l2">
+        <p></p>
+    </div>
 </div>
-    
+<div class="parallax"><img src="../assets/images/background1.jpg" alt="Unsplashed background img 1"></div>
+</div>
+
+
 
 </div>
 <footer class="page-footer teal darken-3 ">
@@ -38,5 +63,5 @@
         <div class="container">
             Copyright © 2017 S N Finance Services. All Rights Reserved.
         </div>
-    </div>    
+    </div>
 </footer>
