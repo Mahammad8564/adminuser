@@ -1,0 +1,79 @@
+﻿<div class="container container-height">
+<div class="section no-pad-bot">
+    
+   
+        <div class="row " style="padding-top:40px;">
+            <form class="col s12">
+
+                <div class="row" align="center">
+                    <div class="input-field col s4">
+                        <input id="search" type="text">
+                        <label for="search">Search</label>
+                    </div>
+
+                    <div class="input-field col s4">
+                        <select>
+                    <option value="" disabled selected>Select Status</option>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                    </select>
+                        
+                    </div>
+
+
+                    <div class="input-field col s4">
+                        <a ng-click="vm.open()" class="waves-effect waves-light btn modal-trigger grey darken-3">Add</a>
+                        
+                    </div>
+                </div>
+
+            </form>
+        </div>
+   
+</div>
+<div class="section no-pad-bot " style="padding-bottom:40px;">
+
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Mobile Number</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="obj in vm.list">
+                    <td>{{obj.number}}</td>
+                    <td>{{obj.mobileNumber}}</td>
+                    <td>{{obj.isActive ? 'Active' : 'Inactive'}}</td>
+                    <td><a ng-click="vm.open(obj)" class="btn btn-floating btn-Small teal"><i class="material-icons">edit</i></a></td>
+                    <td><a ng-click="vm.onDelete(obj.id)" class="btn btn-floating btn-Small red"><i class="material-icons">delete</i></td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+
+</div>
+ 
+
+<script>
+    $(document).ready(function () {
+        $('.parallax').parallax();
+    });
+
+    $(document).ready(function () {
+        $('select').material_select();
+    });
+
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+
+    $('#modal1').modal('open');
+
+    $('#modal1').modal('close');
+
+</script>

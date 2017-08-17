@@ -1,0 +1,11 @@
+{
+  "name": "myra",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "angular-route": "^1.4.7",
+    "angular-ui-router": "^0.4.2",
+    "restangular": "^1.6.1",
+    "angular-bootstrap": "^2.5.0",
+  }
+}
