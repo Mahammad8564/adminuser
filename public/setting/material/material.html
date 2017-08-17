@@ -6,7 +6,8 @@
 
                 <div class="row" align="center">
                     <div class="input-field col s4">
-                        <input id="search" type="text">
+                        <input ng-model="vm.options.search" ng-change="vm.search()" type="text">
+                        <!--<input id="search" type="text">-->
                         <label for="search">Search</label>
                     </div>
 
@@ -21,7 +22,7 @@
 
 
                     <div class="input-field col s4">
-                        <a ng-click="vm.open()" class="btn-floating btn-large waves-effect waves-light btn modal-trigger red"><i class="material-icons">add</i></a>
+                        <a ng-click="vm.open()" class="btn-floating btn-large waves-effect waves-light btn red"><i class="material-icons">add</i></a>
                         
                     </div>
                 </div>
@@ -47,7 +48,7 @@
                 <tr ng-repeat="obj in vm.list">
                     <td>{{obj.number}}</td>
                     <td>{{obj.mobileNumber}}</td>
-                    <td>{{obj.isActive ? 'Active' : 'Inactive'}}</td>
+                    <td>{{obj.Status.title}}</td>
                     <td><a ng-click="vm.open(obj)" class="btn btn-floating btn-Small cyan"><i class="material-icons">edit</i></a></td>
                     <td><a ng-click="vm.onDelete(obj.id)" class="btn btn-floating btn-Small red"><i class="material-icons">delete</i></td>
                 </tr>
@@ -125,19 +126,6 @@
 
 <script>
     $(document).ready(function () {
-        $('.parallax').parallax();
-    });
-
-    $(document).ready(function () {
         $('select').material_select();
     });
-
-    $(document).ready(function () {
-        $('.modal').modal();
-    });
-
-    $('#modal1').modal('open');
-
-    $('#modal1').modal('close');
-
 </script>

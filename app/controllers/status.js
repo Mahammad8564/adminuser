@@ -1,9 +1,14 @@
 ﻿var models = require('../models');
-var Material = models.Material;
 var Status = models.Status;
 var User = models.User;
 var Sequelize = require('sequelize');
 var _ = require('underscore');
+
+// {
+//     "title" : "Active",
+//     "isActive" : true
+// }
+
 //get Error Message Consized
 var getErrorMessage = function (err) {
     if (err.errors) {
@@ -20,8 +25,7 @@ var getErrorMessage = function (err) {
 //getting List of 
 //For Geting list of Materials
 exports.list = function (req, res) {
-    req.options.include = [{ model: Status, attributes: ["title", "id"] }];
-    Material.findAndCountAll(req.options).then(function (arrs) {
+    Status.findAndCountAll(req.options).then(function (arrs) {
         res.setHeader('total', arrs.count);
         res.json(arrs.rows);
     }).catch(function (err) {
@@ -31,16 +35,15 @@ exports.list = function (req, res) {
 }
 
 exports.read = function (req, res) {
-    res.json(req.material);
+    res.json(req.Status);
 }
 
-exports.getById = function (req,res,next) {
-    Material.findOne({
-        where: { id: req.params.materialId},
-        include: [{ model: Status, attributes: ["title", "id"] }]
+exports.getById = function (req, res, next) {
+    Status.findOne({
+        where: { id: req.params.materialId },
         //include: []
     }).then(function (obj) {
-        req.material = obj;
+        req.Status = obj;
         next();
     }).catch(function (err) {
         res.status(400).send({ message: getErrorMessage(err) });
@@ -48,7 +51,7 @@ exports.getById = function (req,res,next) {
 }
 
 exports.create = function (req, res) {
-    Material.create(req.body).then(function (obj) {
+    Status.create(req.body).then(function (obj) {
         if (!obj) {
             return res.send({ message: "Error Occured while updataing" });
         }
@@ -62,34 +65,34 @@ exports.create = function (req, res) {
 }
 
 exports.update = function (req, res) {
-    var material = req.material;
+    var Status = req.Status;
     _.forEach(req.body, function (val, key) {
-        material.dataValues[key] = val;
+        Status.dataValues[key] = val;
     });
-    Material.update(material.dataValues, {
-            where: {
-                id: req.params.materialId
-            }
-        })
-     .then(function (obj) {
-         return res.json(obj);
-    }).catch(function (error) {
-        return res.status(400).send({ message: getErrorMessage(error) });
-    });
+    Status.update(Status.dataValues, {
+        where: {
+            id: req.params.materialId
+        }
+    })
+        .then(function (obj) {
+            return res.json(obj);
+        }).catch(function (error) {
+            return res.status(400).send({ message: getErrorMessage(error) });
+        });
 
 }
 
 exports.delete = function (req, res) {
     console.log(req.params);
-    Material.destroy({
-            where: {
-                id: req.params.materialId
-            }
-        })
-     .then(function (obj) {
-         return res.json(obj);
-    }).catch(function (error) {
-        return res.status(400).send({ message: getErrorMessage(error) });
-    });
+    Status.destroy({
+        where: {
+            id: req.params.materialId
+        }
+    })
+        .then(function (obj) {
+            return res.json(obj);
+        }).catch(function (error) {
+            return res.status(400).send({ message: getErrorMessage(error) });
+        });
 
 }

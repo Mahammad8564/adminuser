@@ -9,19 +9,30 @@
 
     function ModalInstanceCtrl(Restangular, $state, $stateParams, $uibModalInstance, item) {
         var vm = this;
+        getStatus();
 
-        console.log(item);
-        if(item) vm.data = item;
+        if (item) vm.data = item;
 
         vm.save = save;
 
+        vm.cancel = function () {
+            $uibModalInstance.close('cancel');
+        };
+
+        function getStatus() {
+            Restangular.all('api/status').getList().then(function (res) {
+                vm.allStatus = res.data;
+                console.log(vm.allStatus);
+            });
+        }
+
         function save(form) {
             vm.startProcessing = true;
-            if (!vm.data.id) {
+            if (vm.data && !vm.data.id) {
                 Restangular.all('api/material').post(vm.data).then(function (res) {
                     // SweetAlert.swal("Material saved successfully!");
                     $uibModalInstance.close(res);
-                    window.location.reload();
+                    // window.location.reload();
                 }, function (err) {
                     $uibModalInstance.dismiss('cancel');
                     vm.error = err.data.message;
@@ -33,7 +44,7 @@
                     // SweetAlert.swal("Material updated successfully!");
                     // $state.go('secure.detail');
                     $uibModalInstance.close(res);
-                    window.location.reload();
+                    // window.location.reload();
                 }, function (err) {
                     $uibModalInstance.dismiss('cancel');
                     vm.error = err.data.message;

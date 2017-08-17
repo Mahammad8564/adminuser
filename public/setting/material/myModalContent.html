@@ -12,10 +12,9 @@
                 <label class="active" for="mobileNumber">Mobile Number</label>
             </div>
             <div class="input-field col s6">
-                <select ng-model="vm.data.isActive">
+                <select ng-model="vm.data.StatusId" ng-cloak>
                     <option value="" >Select Status</option>
-                    <option value="true">Active</option>
-                    <option value="false">Inactive</option>
+                    <option ng-repeat="status in vm.allStatus" value="{{status.id}}">{{status.title}}</option>
                 </select>
                 <label>Status</label>
             </div>
@@ -26,14 +25,8 @@
                 <a ng-disabled="vm.startProcessing" ng-click="vm.save()" class="waves-effect waves-light btn">Save</a>
             </div>
             <div class="input-field col s12">
-                <a ui-sref="secure.detail" class="waves-effect waves-light btn modal-close">Cancel</a>
+                <a ng-click="vm.cancel()" class="waves-effect waves-light btn modal-close">Cancel</a>
             </div>
-            <!--<div class="">
-                <input ng-disabled="vm.startProcessing" value="Save" type="button" ng-click="vm.save()">
-            </div>
-            <div class="">
-                <input value="Cancel" type="button" ui-sref="secure.detail">
-            </div>-->
         </div>
     </form>
 </div>
@@ -42,11 +35,4 @@
     $(document).ready(function () {
         $('select').material_select();
     });
-
-  
-
-    $('#modal1').modal('open');
-
-    $('#modal1').modal('close');
-
 </script>

@@ -1,27 +1,23 @@
-﻿"use strict";
+"use strict";
 module.exports = function (sequelize, DataTypes) {
-    var Material = sequelize.define("Material", {
-        number: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        mobileNumber: {
+    var Status = sequelize.define("Status", {
+        title: {
             type: DataTypes.STRING,
             allowNull: false
         },
         isActive: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: false
+            defaultValue: true
         },
     }, {
             classMethods: {
                 associate: function (models) {
-                     Material.belongsTo(models.Status);
+                    Status.hasMany(models.Material);
                 }
             }
         }
     );
 
-    return Material;
+    return Status;
 };

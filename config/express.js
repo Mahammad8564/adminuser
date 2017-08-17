@@ -50,6 +50,7 @@ module.exports = function(){
     require('../app/routes/user.js')(app);
     require('../app/routes/index.js')(app);
     require('../app/routes/material.js')(app);
+    require('../app/routes/status.js')(app);
 
     app.use(express.static('./public'));
     app.use(express.static('./uploads'));

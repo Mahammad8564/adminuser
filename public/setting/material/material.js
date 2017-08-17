@@ -52,10 +52,10 @@
                 }
             });
 
-            modalInstance.result.then(function (selectedItem) {
-                $ctrl.selected = selectedItem;
-            }, function () {
-                console.log('Modal dismissed at: ' + new Date());
+            modalInstance.result.then(function (res) {
+                getList();
+            }, function (err) {
+                console.log(err);
             });
         };
 
@@ -75,7 +75,7 @@
             if (!vm.material.id) {
                 Restangular.all('api/material').post(vm.material).then(function (res) {
                     // SweetAlert.swal("Material saved successfully!");
-                    $state.go('secure.detail');
+                    $state.go('secure.status');
                 }, function (err) {
                     vm.error = err.data.message;
                     vm.startProcessing = false;
@@ -84,7 +84,7 @@
             else {
                 Restangular.one('api/material/' + vm.material.id).patch(vm.material).then(function (res) {
                     // SweetAlert.swal("Material updated successfully!");
-                    $state.go('secure.detail');
+                    $state.go('secure.status');
                 }, function (err) {
                     vm.error = err.data.message;
                     vm.startProcessing = false;
@@ -105,7 +105,7 @@
 
         function search() {
             vm.options.page = 1;
-            vm.options.where = 'title;$like|s|%' + vm.options.search + '%';
+            vm.options.where = 'number;$like|s|%' + vm.options.search + '%';
             getList();
         }
 
