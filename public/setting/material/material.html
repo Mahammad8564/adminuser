@@ -1,37 +1,35 @@
 ﻿<div class="container container-height">
-<div class="section no-pad-bot">
-    
-   
+    <div class="section no-pad-bot">
+
+
         <div class="row " style="padding-top:40px;">
             <form class="col s12">
 
                 <div class="row" align="center">
                     <div class="input-field col s4">
-                        <input id="search" type="text">
+                        <input ng-model="vm.options.search" ng-change="vm.search(true)" type="text">
                         <label for="search">Search</label>
                     </div>
 
                     <div class="input-field col s4">
-                        <select>
-                    <option value="" disabled selected>Select Status</option>
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
-                    </select>
-                        
+                        <select ng-model="vm.options.filter" ng-change="vm.search(false)" ng-cloak>
+                            <option value="" >Select Status</option>
+                            <option ng-repeat="status in vm.allStatus" value="{{status.id}}">{{status.title}}</option>
+                        </select>
                     </div>
 
 
                     <div class="input-field col s4">
                         <a ng-click="vm.open()" class="waves-effect waves-light btn modal-trigger grey darken-3">Add</a>
-                        
+
                     </div>
                 </div>
 
             </form>
         </div>
 
-</div>
-<div class="section no-pad-bot">
+    </div>
+    <div class="section no-pad-bot">
 
         <table class="striped">
             <thead>

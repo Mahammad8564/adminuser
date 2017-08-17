@@ -103,9 +103,9 @@
             getList();
         }
 
-        function search() {
+        function search(searchFlag) {
             vm.options.page = 1;
-            vm.options.where = 'number;$like|s|%' + vm.options.search + '%';
+            vm.options.where = searchFlag ? ('number;$like|s|%' + vm.options.search + '%') : ('StatusId;$like|s|%' + vm.options.filter + '%');
             getList();
         }
 
@@ -117,6 +117,14 @@
             getList();
         }
 
+        function getStatus() {
+            Restangular.all('api/status').getList().then(function (res) {
+                vm.allStatus = res.data;
+                console.log(vm.allStatus);
+            });
+        }
+
+        getStatus();
         getList();
     }
 
