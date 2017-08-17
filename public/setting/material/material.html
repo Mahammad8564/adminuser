@@ -29,11 +29,10 @@
 
             </form>
         </div>
-<<<<<<< HEAD
-    </div>
+
 </div>
 <div class="section no-pad-bot">
->>>>>>> Vishesh
+
         <table class="striped">
             <thead>
                 <tr>
@@ -48,7 +47,7 @@
                 <tr ng-repeat="obj in vm.list">
                     <td>{{obj.number}}</td>
                     <td>{{obj.mobileNumber}}</td>
-                    <td>{{obj.isActive ? 'Active' : 'Inactive'}}</td>
+                    <td>{{obj.Status.title}}</td>
                     <td><a ng-click="vm.open(obj)" class="btn btn-floating btn-Small teal"><i class="material-icons">edit</i></a></td>
                     <td><a ng-click="vm.onDelete(obj.id)" class="btn btn-floating btn-Small red"><i class="material-icons">delete</i></td>
                 </tr>
