@@ -153,7 +153,7 @@ exports.delete = function (req, res) {
 //Signout Procedure
 exports.signout = function (req, res) {
     req.logout();
-    return res.redirect('/login');
+    return res.redirect('login');
     //req.session.destroy(function (err) {
     //    if (err) { return next(err); }
     //    // The response should indicate that the user is no longer authenticated.
