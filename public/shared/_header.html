@@ -1,0 +1,46 @@
+﻿<!--<div class="main-header">
+    <div class="logo" ui-sref="secure.dashboard" style="cursor:pointer;"><img src="images/logo.png" alt="Myra The Boutique"></div>
+    <span class="menu-toggle" ng-click="vm.toggle()">
+        <i></i>
+        <i></i>
+        <i></i>
+    </span>
+    <div class="navbar">
+        <ul>
+            <li ng-click="vm.toggleActive()" ng-if="vm.user"><a ng-class="{'active' : $root.toState.highlight === 'home'}" ui-sref="secure.home">Home</a></li>
+            <li ng-if="vm.user"><a ng-class="{'active' : $root.toState.highLightSetting === 'setting'}"  ui-sref="secure.setting.user">Settings</a></li>
+            <li ng-if="vm.user" title="logged in as {{vm.user.fullname}}"><a ng-click="vm.logout()" href="">Logout</a></li>
+            <li ng-if="!vm.user"><a ng-class="{'active' : $root.toState.highlight === 'home'}" ui-sref="home">Home</a></li>
+            <li ng-if="!vm.user"><a ng-class="{'active' : $root.toState.highlight === 'login'}" ui-sref="login">Login</a></li>
+        </ul>
+    </div>
+
+</div>-->
+<nav class="teal" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">Logo</a>
+        <ul class="right hide-on-med-and-down">
+            <li ng-if="vm.user" title="logged in as {{vm.user.fullname}}"><a ng-click="vm.logout()" href="">Logout</a></li>
+            <li ng-if="!vm.user"><a ng-class="{'active' : $root.toState.highlight === 'login'}" ui-sref="login">Login</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            <li><a ui-sref="home">Login</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+<!--main.html-->
+ <!--<nav class="teal" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">Logo</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a ui-sref="home">Login</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a ui-sref="home">Login</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>-->
