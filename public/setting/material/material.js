@@ -5,10 +5,17 @@
 
     angular.module('myra').controller('MaterialController', MaterialController);
 
-    MaterialController.$inject = ['Restangular', '$state', '$stateParams', '$uibModal'];
+    MaterialController.$inject = ['Restangular', '$state', '$stateParams', '$uibModal','$scope','$watch','$timeout'];
 
-    function MaterialController(Restangular, $state, $stateParams, $uibModal) {
+    function MaterialController(Restangular, $state, $stateParams, $uibModal, $scope, $watch,$timeout) {
         var vm = this;
+
+        // $scope.$watch(vm.options.filter, function(newValue, oldValue) {
+        //     $timeout(function() {
+        //         $("#filter").val(newValue);
+        //         $("#filter").material_select();
+        //     }, 0);
+        // });
 
         vm.list = [];
         vm.save = save;
