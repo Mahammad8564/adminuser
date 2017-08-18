@@ -59,14 +59,6 @@
                     }
                 }],
             })
-            // .state('secure.home', {
-            //     url: '/home',
-            //     templateUrl: '/home/home.html',
-            //     title: 'Home',
-            //     highlight: 'home',
-            //     controller: 'HomeController',
-            //     controllerAs: 'vm'
-            // })
             .state('secure.setting', {
                 url: '/setting',
                 templateUrl: '/setting/setting.html',
