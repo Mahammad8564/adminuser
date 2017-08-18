@@ -24,15 +24,19 @@
                         </div>
                         <div class="col s3"></div>
                     </div>
+                    <form name="form" ng-submit="vm.search(data)">
                     <div class="row">
                         <div class="input-field col s2"></div>
                         <div class="input-field col s4">
-                            <input id="number" type="text" class="validate" ng-model="vm.data.number">
+                            <input name="number" id="number" type="text" class="validate" ng-model="vm.data.number" ng-pattern="/^[0-9]*$/">
                             <label for="number">Application ID</label>
+                            <span style="float:left;" class="teal-text text-darken-3" ng-show="form.number.$error.pattern && form.number.$dirty">Application ID should be number.</span>
+                            <!-- <span ng-show="form.AffiliateName.$error.minlength && form.$submitted">Affiliate Name should be at least 2 chars.</span> -->
                         </div>
                         <div class="input-field col s4">
-                            <input id="mobileNumber" type="text" class="validate" ng-model="vm.data.mobileNumber">
+                            <input name="mobileNumber" id="mobileNumber" type="text" class="validate" ng-model="vm.data.mobileNumber" ng-pattern="/^[0-9]*$/">
                             <label for="mobileNumber">Mobile Number</label>
+                            <span style="float:left;" class="teal-text text-darken-3" ng-show="form.mobileNumber.$error.pattern && form.mobileNumber.$dirty">Mobile Number should be number.</span>
                         </div>
                         <div class="input-field col s2"></div>
                     </div>
@@ -41,9 +45,10 @@
                         <span ng-if="vm.result" class="submit-error teal-text text-darken-3">{{vm.result.Status.title}}</span>
                     </div>
                     <div class="row center">
-                        <button value="{{vm.loginBtnText}}" id="download-button" class="btn waves-effect waves-light grey darken-3" ng-click="vm.search()">Search</button>
-                        <button ng-click="vm.data={}" id="download-button" class="btn waves-effect waves-light grey darken-3">Clear</button>
+                        <button type="submit" ng-disabled="vm.data.number == null || vm.data.mobileNumber == null" class="btn waves-effect waves-light grey darken-3" ng-click="vm.search()">Search</button>
+                        <button type="button" ng-click="vm.data={};vm.clear()" id="download-button" class="btn waves-effect waves-light grey darken-3">Clear</button>
                     </div>
+                </form>
                 </div>
             </div>
         </div>

@@ -5,13 +5,22 @@
 
     angular.module('myra').controller('ModalInstanceCtrl', ModalInstanceCtrl);
 
-    ModalInstanceCtrl.$inject = ['Restangular', '$state', '$stateParams', '$uibModalInstance', 'item'];
+    ModalInstanceCtrl.$inject = ['Restangular', '$state', '$stateParams', '$uibModalInstance', 'item', '$scope', '$timeout'];
 
-    function ModalInstanceCtrl(Restangular, $state, $stateParams, $uibModalInstance, item) {
+    function ModalInstanceCtrl(Restangular, $state, $stateParams, $uibModalInstance, item, $scope, $timeout) {
         var vm = this;
         getStatus();
 
-        if (item) vm.data = item;
+        if (item){
+            vm.data = item;
+
+            $scope.$watch('vm.data.StatusId', function(newValue, oldValue) {
+                $timeout(function() {   
+                    $("#StatusId").val(newValue);
+                    $("#StatusId").material_select();
+                }, 0);
+            });
+        } 
 
         vm.save = save;
 

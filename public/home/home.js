@@ -11,10 +11,13 @@
         var vm = this;
 
         vm.search = search;
-
-        function search() {
+        vm.clear = clear;
+        function clear(){
             vm.result = {};
             vm.error = '';
+        }
+        function search() {
+            clear();
             Restangular.all('api/materialSearch').post(vm.data).then(function (res) {
                 if(res.status == 200) vm.result =  res.data;
                 else vm.error = 'No records found'

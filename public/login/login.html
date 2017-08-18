@@ -36,7 +36,7 @@
                 </div>
                 
                 <div class="row center">
-                    <button value="{{vm.loginBtnText}}"  ng-click="vm.login(loginForm)" id="download-button" class="btn waves-effect waves-light grey darken-3">Login</button>
+                    <button ng-disabled="vm.user.username == null || vm.user.password == null" value="{{vm.loginBtnText}}"  ng-click="vm.login(loginForm)" id="download-button" class="btn waves-effect waves-light grey darken-3">Login</button>
                 </div>
             </form>
           </div>
