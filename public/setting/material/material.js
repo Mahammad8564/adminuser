@@ -5,17 +5,10 @@
 
     angular.module('myra').controller('MaterialController', MaterialController);
 
-    MaterialController.$inject = ['Restangular', '$state', '$stateParams', '$uibModal','$scope','$watch','$timeout'];
+    MaterialController.$inject = ['Restangular', '$state', '$stateParams', '$uibModal','$scope','$timeout'];
 
-    function MaterialController(Restangular, $state, $stateParams, $uibModal, $scope, $watch,$timeout) {
+    function MaterialController(Restangular, $state, $stateParams, $uibModal, $scope,$timeout) {
         var vm = this;
-
-        // $scope.$watch(vm.options.filter, function(newValue, oldValue) {
-        //     $timeout(function() {
-        //         $("#filter").val(newValue);
-        //         $("#filter").material_select();
-        //     }, 0);
-        // });
 
         vm.list = [];
         vm.save = save;
@@ -33,6 +26,14 @@
             page: 1,
             search: ''
         }
+        
+        $scope.$watch(vm.options.filter, function(newValue, oldValue) {
+            $timeout(function() {
+                $("#filter").val(newValue);
+                $("#filter").material_select();
+            }, 0);
+        });
+
         if ($stateParams.id && $stateParams.id != 'new') {
             Restangular.one('api/material/' + $stateParams.id).get().then(function (res) {
                 vm.material = res.data;

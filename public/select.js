@@ -1,5 +1,5 @@
 angular.module('myra')
-    .directive("myMaterialSelect", ["$timeout", function ($timeout) {
+    .directive("selectDirective", ["$timeout", function ($timeout) {
         return {
             restrict: 'A',
             require: 'ngModel',
