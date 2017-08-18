@@ -88,7 +88,7 @@ getRestify.prototype.queryBuilder = function (req, res, next) {
         cModel(req.options.include,'');
 
     }
-    if (req.query.where) {
+    if (req.query.where && !req.query.byPassQueryBuilder) {
         var whr = req.query.where.split(',');
         whr.forEach(function (item) {
             var ws = item.split(';');
@@ -112,6 +112,9 @@ getRestify.prototype.queryBuilder = function (req, res, next) {
             else if(ws[1] != 'undefined')
                 req.options.where[ws[0]] = ws[1];
         });
+    }
+    else{
+        req.options.where = req.query.where;
     }
 
     if (req.query.sort) {

@@ -5,10 +5,22 @@
 
     angular.module('myra').controller('HomeController', HomeController);
 
-    HomeController.$inject = ['Authentication'];
+    HomeController.$inject = ['Authentication','Restangular'];
 
-    function HomeController(Authentication) {
+    function HomeController(Authentication,Restangular) {
         var vm = this;
+
+        vm.search = search;
+
+        function search() {
+            vm.result = {};
+            vm.error = '';
+            Restangular.all('api/materialSearch').post(vm.data).then(function (res) {
+                if(res.status == 200) vm.result =  res.data;
+                else vm.error = 'No records found'
+                console.log(vm.list);
+            });
+        }
 
         $(document).ready(function () {
             $('.parallax').parallax();

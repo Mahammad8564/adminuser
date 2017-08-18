@@ -1,9 +1,7 @@
 ﻿var models = require('../models');
 var Material = models.Material;
-var Status = models.Status;
 var User = models.User;
-var Sequelize = require('sequelize');
-var _ = require('underscore');
+var Status = models.Status;
 //get Error Message Consized
 var getErrorMessage = function (err) {
     if (err.errors) {
@@ -42,6 +40,17 @@ exports.getById = function (req,res,next) {
     }).then(function (obj) {
         req.material = obj;
         next();
+    }).catch(function (err) {
+        res.status(400).send({ message: getErrorMessage(err) });
+    });
+}
+
+exports.search = function (req,res,next) {
+    Material.find({
+        where: { number: req.body.number, mobileNumber: req.body.mobileNumber},
+        include: [{ model: Status, attributes: ["title", "id"] }]
+    }).then(function (obj) {
+        obj ? res.json(obj) : res.status(204).send({ message: 'No Records Found' });
     }).catch(function (err) {
         res.status(400).send({ message: getErrorMessage(err) });
     });

@@ -1,8 +1,8 @@
 ﻿<div class="container container-height">
-<div class="section no-pad-bot">
-    
-   
-        <div class="row " style="padding-top:40px;">
+    <div class="section no-pad-bot">
+
+
+        <div class="row ">
             <form class="col s12">
 
                 <div class="row" align="center">
@@ -17,8 +17,6 @@
                             <option ng-repeat="status in vm.allStatus" value="{{status.id}}">{{status.title}}</option>
                         </select>
                     </div>
-
-
                     <div class="input-field col s4">
                         <a ng-click="vm.open()" class="waves-effect waves-light btn modal-trigger grey darken-3">Add</a>
                     </div>
@@ -27,17 +25,12 @@
             </form>
         </div>
 
-    </div>
-    <div class="section no-pad-bot">
-
         <table class="striped">
             <thead>
                 <tr>
+                    <th>Application ID</th>
                     <th>Mobile Number</th>
                     <th>Status</th>
-                    <th></th>
-                    <th></th>
-
                 </tr>
             </thead>
             <tbody>
@@ -45,8 +38,8 @@
                     <td>{{obj.number}}</td>
                     <td>{{obj.mobileNumber}}</td>
                     <td>{{obj.Status.title}}</td>
-                    <td><a ng-click="vm.open(obj)" class="btn btn-floating btn-Small teal"><i class="material-icons">edit</i></a></td>
-                    <td><a ng-click="vm.onDelete(obj.id)" class="btn btn-floating btn-Small red"><i class="material-icons">delete</i></td>
+                    <td><a ng-click="vm.open(obj)" class="btn btn-floating tiny teal"><i class="material-icons">edit</i></a></td>
+                    <td><a ng-click="vm.onDelete(obj.id)" class="btn btn-floating tiny red"><i class="material-icons">delete</i></td>
                 </tr>
             </tbody>
         </table>
