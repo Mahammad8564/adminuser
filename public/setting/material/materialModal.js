@@ -12,16 +12,6 @@
         getStatus();
 
         if (item) vm.data = item;
-
-        console.log(vm.data);
-
-        $scope.$watch(vm.data.StatusId, function(newValue, oldValue) {
-            $timeout(function() {
-                $("#StatusId").val(newValue);
-                $("#StatusId").material_select();
-            }, 0);
-        });
-
         vm.save = save;
 
         vm.cancel = function () {
