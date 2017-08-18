@@ -27,12 +27,12 @@
             search: ''
         }
 
-        $scope.$watch('vm.options.filter', function(newValue, oldValue) {
-            $timeout(function() {
-                $("#filter").val(newValue);
-                $("#filter").material_select();
-            }, 0);
-        });
+        // $scope.$watch('vm.options.filter', function(newValue, oldValue) {
+        //     $timeout(function() {
+        //         $("#filter").val(newValue);
+        //         $("#filter").material_select();
+        //     }, 0);
+        // });
 
         if ($stateParams.id && $stateParams.id != 'new') {
             Restangular.one('api/material/' + $stateParams.id).get().then(function (res) {
