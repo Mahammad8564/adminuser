@@ -5,9 +5,9 @@
 
     angular.module('myra').controller('MaterialController', MaterialController);
 
-    MaterialController.$inject = ['Restangular', '$state', '$stateParams', '$uibModal','$scope','$timeout'];
+    MaterialController.$inject = ['Restangular', '$state', '$stateParams', '$uibModal', '$scope', '$timeout'];
 
-    function MaterialController(Restangular, $state, $stateParams, $uibModal, $scope,$timeout) {
+    function MaterialController(Restangular, $state, $stateParams, $uibModal, $scope, $timeout) {
         var vm = this;
 
         vm.list = [];
@@ -27,16 +27,16 @@
             search: ''
         }
 
-        // $scope.$watch('vm.options.filter', function(newValue, oldValue) {
-        //     $timeout(function() {
-        //         $("#filter").val(newValue);
-        //         $("#filter").material_select();
-        //     }, 0);
-        // });
+        $scope.$watch('vm.options.filter', function (newValue, oldValue) {
+            $timeout(function () {
+                $("#filter").val(newValue);
+                $("#filter").material_select();
+            }, 0);
+        });
 
         if ($stateParams.id && $stateParams.id != 'new') {
             Restangular.one('api/material/' + $stateParams.id).get().then(function (res) {
-                vm.material = res.data;
+                vm.material = Restangular.stripRestangular(res.data);
             });
         }
 
@@ -47,7 +47,6 @@
         };
 
         vm.open = function (item) {
-            console.log(item);
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: '/setting/material/myModalContent.html',
@@ -127,8 +126,7 @@
 
         function getStatus() {
             Restangular.all('api/status').getList().then(function (res) {
-                vm.allStatus = res.data;
-                console.log(vm.allStatus);
+                vm.allStatus = Restangular.stripRestangular(res.data);
             });
         }
 
