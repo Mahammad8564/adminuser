@@ -12,7 +12,7 @@
                     </div>
 
                     <div class="input-field col s4">
-                        <select id="filter" ng-model="vm.options.filter" ng-change="vm.search(false)" select-directive>
+                        <select id="filter" ng-model="vm.options.filter" ng-change="vm.search(false)" select-directive ng-cloak>
                             <option value="" >Select Status</option>
                             <option ng-repeat="status in vm.allStatus" value="{{status.id}}">{{status.title}}</option>
                         </select>

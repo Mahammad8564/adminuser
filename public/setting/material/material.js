@@ -26,8 +26,8 @@
             page: 1,
             search: ''
         }
-        
-        $scope.$watch(vm.options.filter, function(newValue, oldValue) {
+
+        $scope.$watch('vm.options.filter', function(newValue, oldValue) {
             $timeout(function() {
                 $("#filter").val(newValue);
                 $("#filter").material_select();

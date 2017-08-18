@@ -12,7 +12,7 @@
                 <label class="active" for="mobileNumber">Mobile Number</label>
             </div>
             <div class="input-field col s6">
-                <select id="StatusId" ng-model="vm.data.StatusId" select-directive>
+                <select id="StatusId" ng-model="vm.data.StatusId" select-directive ng-cloak>
                     <option value="" >Select Status</option>
                     <option ng-repeat="status in vm.allStatus" value="{{status.id}}">{{status.title}}</option>
                 </select>
