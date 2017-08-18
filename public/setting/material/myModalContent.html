@@ -1,15 +1,19 @@
 <div class="row" >
-    <form class="col s12">
+    <form class="col s12" name="form" ng-submit="vm.search(data)">
         <div class="row">
             <div class="input-field col s12">
-                <input id="number" placeholder="Number" type="text" class="validate" ng-model="vm.data.number">
-                <label class="active" for="number">Number</label>
+                <input name="number" id="number" placeholder="Application ID" type="text" class="validate" ng-pattern="/^[0-9]*$/" ng-model="vm.data.number">
+                <span style="float:left;" class="teal-text text-darken-3" ng-show="form.number.$error.pattern && form.number.$dirty">Application ID should be number.</span>
+                <!-- <label class="active" for="number">Number</label> -->
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input id="mobileNumber" type="text" class="validate" ng-model="vm.data.mobileNumber">
-                <label class="active" for="mobileNumber">Mobile Number</label>
+                <input name="mobileNumber" id="mobileNumber" placeholder="Mobile Number" type="text" class="validate" ng-pattern="/^[0-9]*$/" ng-model="vm.data.mobileNumber" ng-maxlength="10" ng-minlength="10">
+                <span style="float:left;" class="teal-text text-darken-3" ng-show="form.mobileNumber.$error.pattern && form.mobileNumber.$dirty">Mobile Number should be number.</span>    
+                <span style="float:left;" class="teal-text text-darken-3" ng-show="form.mobileNumber.$error.maxlength && form.mobileNumber.$dirty">Mobile Number should be exact 10 number.</span> 
+                <span style="float:left;" class="teal-text text-darken-3" ng-show="form.mobileNumber.$error.minlength && form.mobileNumber.$dirty">Mobile Number should be exact 10 number.</span>                 
+                <!-- <label class="active" for="mobileNumber">Mobile Number</label> -->
             </div>
             <div class="input-field col s6">
                 <select ng-model="vm.data.StatusId" ng-cloak>
@@ -22,7 +26,7 @@
 
         <div class="row">
              <div class="input-field col s6">
-                <a style="float:right;" ng-disabled="vm.startProcessing" ng-click="vm.save()" class="waves-effect waves-light btn">Save</a>
+                <a style="float:right;" ng-disabled="vm.startProcessing || vm.data.number == null || vm.data.mobileNumber == null || vm.data.StatusId == null" ng-click="vm.save()" class="waves-effect waves-light btn">Save</a>
             </div>
             <div class="input-field col s6">
                 <a ng-click="vm.cancel()" class="waves-effect waves-light btn modal-close">Cancel</a>

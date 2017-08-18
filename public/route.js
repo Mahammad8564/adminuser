@@ -109,7 +109,7 @@
             })
             ;
         
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/adminHome');
     }
 
     function highLightMenu($rootScope) {
