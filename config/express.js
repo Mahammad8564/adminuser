@@ -13,7 +13,7 @@ var models = require("../app/models/index");
 module.exports = function(){
     var app = express();
     models.sequelize.sync().then(function () {
-        var server = app.listen(3000, function () {
+        var server = app.listen(3003, function () {
 
         });
     });

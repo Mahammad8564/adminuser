@@ -4,7 +4,6 @@
 
         <div class="row ">
             <form name="materialForm" class="col s12">
-
                 <div class="row" align="center">
                     <div class="input-field col s4">
                         <input ng-model="vm.options.search" my-enter="vm.search(true)" type="text">
@@ -12,9 +11,9 @@
                     </div>
 
                     <div class="input-field col s4">
-                        <select id="filter" ng-model="vm.options.filter" ng-change="vm.search(false)" select-directive ng-cloak>
-                            <option value="" >Select Status</option>
-                            <option ng-repeat="status in vm.allStatus" value="{{status.id}}">{{status.title}}</option>
+                        <select id="filter" ng-model="vm.options.filter" ng-change="vm.search(false)" ng-options="item.id as item.title for item in vm.allStatus track by item.id"
+                            select-directive ng-cloak>
+                             <option value="" >Select Status</option>
                         </select>
                     </div>
                     <div class="input-field col s4">

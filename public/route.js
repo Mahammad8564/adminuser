@@ -33,6 +33,19 @@
                     }
                 }],
             })
+            .state('clientHome', {
+                url: '/clientHome',
+                templateUrl: '/home/home.html',
+                title: 'Home',
+                highlight : 'home',
+                controller: 'HomeController',
+                controllerAs: 'vm',
+                onEnter: ['$state', 'Authentication', function ($state, Authentication) {
+                    if (Authentication.isAuthenticated()) {
+                        $state.go('secure.status');
+                    }
+                }],
+            })
             .state('adminHome', {
                 url: '/adminHome',
                 templateUrl: '/home/adminHome.html',
@@ -109,7 +122,7 @@
             })
             ;
         
-        $urlRouterProvider.otherwise('/adminHome');
+        $urlRouterProvider.otherwise('/clientHome');
     }
 
     function highLightMenu($rootScope) {
